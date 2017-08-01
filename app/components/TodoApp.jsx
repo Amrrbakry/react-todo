@@ -10,19 +10,23 @@
        todos: [
          {
            id: uuid(),
-           text: 'Walk the dog!'
+           text: 'Walk the dog!',
+           completed: false
          },
          {
            id: uuid(),
-           text: 'Feed the cat!'
+           text: 'Feed the cat!',
+           completed: true
          },
          {
            id: uuid(),
-           text: 'learn react'
+           text: 'learn react',
+           completed: true
          },
          {
            id: uuid(),
-           text: 'rule the world'
+           text: 'rule the world',
+           completed: true
          }
 
        ],
@@ -36,13 +40,24 @@
        searchText: searchText.toLowerCase()
      });
    },
+   handleToggle: function(id) {
+     var updatedTodos = this.state.todos.map((todo) => {
+       if(todo.id === id) {
+         todo.completed = !todo.completed;
+
+       }
+       return todo;
+     });
+     this.setState({todos: updatedTodos});
+   },
    handleAddTodo: function(text) {
      this.setState({
        todos: [
          ...this.state.todos,
          {
            id: uuid(),
-           text: text
+           text: text,
+           completed: false
          }
        ]
      });
@@ -53,7 +68,7 @@
        <div className='row'>
          <div className='column medium-6 small-4'>
            <TodoSearch onSearch={this.handleSearch}/>
-           <TodoList todos={todos}/>
+           <TodoList todos={todos} onToggle={this.handleToggle}/>
            <AddTodo onAddTodo={this.handleAddTodo}/>
          </div>
        </div>
