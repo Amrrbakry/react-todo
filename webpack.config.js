@@ -23,7 +23,8 @@ module.exports = {
   resolve: {
     modulesDirectories: [
       'node_modules',
-      './app/components'
+      './app/components',
+      './app/api'
     ],
     root: __dirname,
     alias: {
