@@ -11,7 +11,7 @@ export var searchTextReducer = (state = '', action) => {
   }
 };
 
-export var showCompletedReducer = (state = false, action) => {
+export var showCompletedReducer = (state = true, action) => {
   switch (action.type) {
     case 'TOGGLE_SHOW_COMPLETED':
       return !state;
@@ -49,6 +49,12 @@ export var todosReducer = (state = [], action) => {
           return todo;
         }
       });
+      break;
+    case 'ADD_TODOS':
+      return [
+        ...state,
+        ...action.todos
+      ];
       break;
     default:
       return state;
