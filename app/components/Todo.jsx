@@ -15,11 +15,10 @@ export var Todo = React.createClass({
         message = 'completed at: ';
         timestamp = completedAt;
       }
-      return message + moment.unix(timestamp).format('MMM Do YYY @ h:mm a');
+      return message + moment.unix(timestamp).format('MMM Do Y @ h:mm a');
     };
     return(
       <div className={todoClassName} onClick={() => {
-          // this.props.onToggle(id);
           dispatch(actions.toggleTodo(id));
         }}>
         <div>
