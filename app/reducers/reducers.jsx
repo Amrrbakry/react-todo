@@ -45,6 +45,8 @@ export var todosReducer = (state = [], action) => {
             completed: nextCompleted,
             completedAt: completedAt
           };
+        } else {
+          return todo;
         }
       });
       break;
